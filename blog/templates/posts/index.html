@@ -1,0 +1,40 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+{% if post_list %}
+<table style="width:100%">
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Created</th>
+      <th>Published</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    {% for post in post_list %}
+    <tr>
+      <td>{{ post.author }}</td> 
+      <td>{{ post.title }}</td>
+      <td>{{ post.text }}</td>
+      <td>{{ post.created_date }}</td>
+      {% if post.published_date != None %}
+        <td>{{ post.published_date }}</td>
+      {% else %}
+      <td><a href="{% url 'posts:publish' post.id %}">publish</a></td>
+      {% endif %}
+      <td><a href="{% url 'posts:update' post.id %}">edit</a></td>
+      <td><a href="{% url 'posts:delete' post.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p>No posts available.</p>
+{% endif %}
+<a href="{% url 'posts:create' %}">Add New Post</a>
+<a href="{% url 'posts:ordered' %}">View By Title</a>
+<a href="{% url 'posts:filtered' %}">Unpublished Posts</a>
+<a href="{% url 'posts:filtered-ordered' %}">Most Recent Publications</a>
