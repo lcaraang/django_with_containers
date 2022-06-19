@@ -1,0 +1,6 @@
+--- # sample entry
+- model: students.student
+  fields:
+    first: John
+    last: Foo
+    email: john@foo.com

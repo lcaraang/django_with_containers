@@ -1,0 +1,29 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+{% if student_list %}
+<table style="width:50%">
+    <tr>
+      <th>First</th>
+      <th>Last</th>
+      <th>Email</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    {% for student in student_list %}
+    <tr>
+      <td>{{ student.first }}</td> 
+      <td>{{ student.last }}</td>
+      <td>{{ student.email }}</td>
+      <td><a href="{% url 'students:update' student.id %}">edit</a></td>
+      <td><a href="{% url 'students:delete' student.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+<a href="{% url 'students:create' %}">Add Student</a>
