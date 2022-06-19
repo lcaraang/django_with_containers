@@ -1,3 +1,4 @@
+<body style="background-color: lightblue;">
 {% if greeting_list %}
     <ul>
     {% for greeting in greeting_list %}
@@ -12,3 +13,5 @@
     <p>No greetings are available.</p>
 {% endif %}
 <a href="{% url 'greetings:create' %}">Create a New Greeting</a>
+<a href="{% url 'greetings:about' %}">About</a>
+</body>

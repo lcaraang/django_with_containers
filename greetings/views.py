@@ -26,3 +26,8 @@ class DeleteView(generic.edit.DeleteView):
     template_name = 'greetings/delete.html' # override default of greetings/greeting_confirm_delete.html
     model = Greeting
     success_url = reverse_lazy('greetings:index')
+
+class AboutView(generic.TemplateView):
+    template_name = 'greetings/about.html'
+    model = Greeting
+    success_url = reverse_lazy('greetings:index')
